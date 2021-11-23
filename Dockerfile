@@ -4,14 +4,14 @@ RUN dnf -y install java-1.8.0-openjdk-headless.x86_64 tar tmux supervisor procps
 RUN dnf -y upgrade nss
 
 # NEM software
-RUN curl -L http://bob.nem.ninja/nis-0.6.98.tgz > nis-0.6.98.tgz
+RUN curl -L http://bob.nem.ninja/nis-0.6.100.tgz > nis-0.6.100.tgz
 
 # New signature scheme, not always published
-RUN sha=$(curl -L -s http://hugealice.nem.ninja:7890/transaction/get?hash=$(curl -L -s http://bob.nem.ninja/nis-0.6.98.tgz.sig | grep txId | sed -e 's/txId: //') | jq -r '.transaction.message.payload[10:74]') && \
-    echo "$sha nis-0.6.98.tgz"  > /tmp/sum && \
+RUN sha=$(curl -L -s http://hugealice.nem.ninja:7890/transaction/get?hash=$(curl -L -s http://bob.nem.ninja/nis-0.6.100.tgz.sig | grep txId | sed -e 's/txId: //') | jq -r '.transaction.message.payload[10:74]') && \
+    echo "$sha nis-0.6.100.tgz"  > /tmp/sum && \
     sha256sum -c /tmp/sum
 
-RUN tar zxf nis-0.6.98.tgz
+RUN tar zxf nis-0.6.100.tgz
 
 RUN useradd --uid 1000 nem
 RUN mkdir -p /home/nem/nem/ncc/
