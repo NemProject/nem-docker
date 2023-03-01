@@ -13,7 +13,7 @@ RUN sha=$(curl -L -s http://hugealice.nem.ninja:7890/transaction/get?hash=$(curl
 
 RUN tar zxf nis-0.6.101.tgz
 
-RUN useradd --uid 1000 nem
+RUN useradd nem
 RUN mkdir -p /home/nem/nem/ncc/
 RUN mkdir -p /home/nem/nem/nis/
 RUN chown nem /home/nem/nem -R
