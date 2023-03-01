@@ -1,6 +1,6 @@
-FROM fedora:25
+FROM fedora:37
 MAINTAINER NEM Contributors
-RUN dnf -y install java-1.8.0-openjdk-headless.x86_64 tar tmux supervisor procps jq unzip gnupg.x86_64
+RUN dnf -y install java-11-openjdk-headless.x86_64 tar tmux supervisor procps jq unzip gnupg
 RUN dnf -y upgrade nss
 
 # NEM software
